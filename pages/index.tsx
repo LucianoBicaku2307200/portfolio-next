@@ -3,7 +3,7 @@ import Link from "next/link";
 import HeroImage from "public/hero image.jpeg";
 export default function Home() {
   return (
-    <section className="flex h-full w-full items-center justify-center ">
+    <section className="flex h-full min-h-full w-full items-center justify-center ">
       <div className="lg:8/12 flex w-10/12 flex-wrap md:w-9/12">
         <div className="flex w-full flex-col justify-center md:w-1/2">
           <h3 className="text-lg">Hi all. I am</h3>
