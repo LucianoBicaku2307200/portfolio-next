@@ -8,6 +8,7 @@ function About() {
         <p className="flex gap-3 border border-lines py-[10px] px-4 text-white">
           <i className="ri-arrow-down-s-fill"></i> contact-info
         </p>
+        
         <p className="flex gap-2 py-4 px-3 text-secondary1 ">
           <i className="ri-mail-fill"></i>
           <span className="cursor-pointer break-all hover:underline">
