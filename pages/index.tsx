@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import HeroImage from "public/hero image.jpeg";
 export default function Home() {
   return (
     <section className="flex h-full min-h-full w-full items-center justify-center ">
@@ -28,13 +26,6 @@ export default function Home() {
               Resume
             </Link>
           </p>
-        </div>
-        <div className="bg-image-blur hidden  content-center  justify-center md:flex md:w-1/2">
-          <Image
-            className="object-cover opacity-30"
-            alt="luciano Bicaku portfolio hero image "
-            src={HeroImage}
-          />
         </div>
       </div>
     </section>

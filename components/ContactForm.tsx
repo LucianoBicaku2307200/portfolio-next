@@ -1,89 +1,101 @@
-import emailjs from "emailjs-com";
+import useContactForm from "@/hooks/useContactForm";
 
-const ContactForm = () => {
-  const submitForm = (event: any) => {
-    event.preventDefault();
-    // emailjs
-    //   .sendForm(
-    //     "gmail",
-    //     process.env.NEXT_PUBLIC_TEMPLATE_ID,
-    //     event.target,
-    //     process.env.NEXT_PUBLIC_USER_ID
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(result);
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //     }
-    //   );
-  };
-
+const ContactForm = (contactFormCallback: any) => {
+  const { inputs, errors, handleInputChange, handleSubmit } =
+    useContactForm(contactFormCallback);
   return (
-    <div className="py-4 px-4 md:pl-9 md:pr-8 w-full">
-      <form onSubmit={submitForm} className="flex flex-col gap-6">
-        <div className="flex flex-col flex-wrap">
-          <label className="text-secondary1 w-1/2" htmlFor="name">
+    <div className="w-full py-4 px-4 md:pl-9 md:pr-8">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+        <div className="flex flex-col  flex-wrap">
+          <label className="w-1/2 text-secondary1" htmlFor="name">
             _name:
           </label>
           <input
-            className="mt-2 rounded-lg w-11/12 border border-secondary1 bg-primary3 py-[10px] px-4"
-            name="name"
-            id="name"
             type="text"
-            placeholder="Name"
+            id="name"
+            name="name"
+            value={inputs.name}
+            onChange={handleInputChange}
+            className={`mt-2 w-11/12 rounded-lg border border-secondary1 bg-primary3 py-[10px] px-4 ${
+              errors.name && "border-red-500"
+            }`}
           />
-          <span></span>
+          {errors.name && (
+            <span className="mt-1 text-sm text-red-500">{errors.name}</span>
+          )}
         </div>
         <div className="flex flex-col  flex-wrap">
-          <label className="text-secondary1 w-1/2" htmlFor="company">
-            _company-name:
+          <label className="w-1/2 text-secondary1" htmlFor="company">
+            _company:
           </label>
           <input
-            className="mt-2 rounded-lg w-11/12 border border-secondary1 bg-primary3 py-[10px] px-4"
-            name="company"
+            type="text"
             id="company"
-            type="text"
-            placeholder="Company Name"
+            name="company"
+            value={inputs.company}
+            onChange={handleInputChange}
+            className={`mt-2 w-11/12 rounded-lg border border-secondary1 bg-primary3 py-[10px] px-4 ${
+              errors.company && "border-red-500"
+            }`}
           />
+          {errors.company && (
+            <span className="mt-1 text-sm text-red-500">{errors.company}</span>
+          )}
         </div>
-
         <div className="flex flex-col  flex-wrap">
-          <label className="text-secondary1  w-1/2">_email:</label>
+          <label className="w-1/2 text-secondary1" htmlFor="email">
+            _email:
+          </label>
           <input
-            className="mt-2 rounded-lg w-11/12 border border-secondary1 bg-primary3 py-[10px] px-4"
-            name="email"
+            type="email"
             id="email"
-            type="text"
-            placeholder="Email"
+            name="email"
+            value={inputs.email}
+            onChange={handleInputChange}
+            className={`mt-2 w-11/12 rounded-lg border border-secondary1 bg-primary3 py-[10px] px-4 ${
+              errors.email && "border-red-500"
+            }`}
           />
+          {errors.email && (
+            <span className="mt-1 text-sm text-red-500">{errors.email}</span>
+          )}
         </div>
-
         <div className="flex flex-col  flex-wrap">
-          <label className="text-secondary1 w-1/2" htmlFor="subject">
+          <label className="w-1/2 text-secondary1" htmlFor="subject">
             _subject:
           </label>
           <input
-            className="mt-2 rounded-lg w-11/12 border border-secondary1 bg-primary3 py-[10px] px-4"
-            name="subject"
-            id="subject"
             type="text"
-            placeholder="Subject"
+            id="subject"
+            name="subject"
+            value={inputs.subject}
+            onChange={handleInputChange}
+            className={`mt-2 w-11/12 rounded-lg border border-secondary1 bg-primary3 py-[10px] px-4 ${
+              errors.subject && "border-red-500"
+            }`}
           />
+          {errors.subject && (
+            <span className="mt-1 text-sm text-red-500">{errors.subject}</span>
+          )}
         </div>
 
         <div className="flex flex-col  flex-wrap">
-          <label className="text-secondary1 w-1/2" htmlFor="message">
-            _message:
+          <label className="w-1/2 text-secondary1" htmlFor="message">
+            Message:
           </label>
           <textarea
-            className="mt-2 rounded-lg w-11/12 border border-secondary1 bg-primary3 py-[10px] px-4"
-            name="message"
             id="message"
-            placeholder="Message"
+            name="message"
+            value={inputs.message}
+            onChange={handleInputChange}
             rows={5}
-          />
+            className={`mt-2 w-11/12 rounded-lg border border-secondary1 bg-primary3 py-[10px] px-4 ${
+              errors.message && "border-red-500"
+            }`}
+          ></textarea>
+          {errors.message && (
+            <span className="mt-1 text-sm text-red-500">{errors.message}</span>
+          )}
         </div>
 
         <button
